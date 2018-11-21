@@ -1,0 +1,52 @@
+<form [formGroup]="AddForm" (ngSubmit)="AddNewDocument()">
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="txtSerialNumber">Serial Number</label>
+            <input name="SerialNumber" formControlName="SerialNumber" type="text" class="form-control" id="txtSerialNumber"
+             placeholder="In format 10/2018">
+        </div>
+
+        <div class="form-group col-md-6">
+            <label for="FileUploader_Content">Document Content</label>
+            <input name="FileUploader_Content" formControlName="Content" type="file" class="form-control" 
+            id="FileUploader_Content" (change)="SetContent($event.target.files)">
+        </div>
+
+    </div>
+
+    <div class="form-group">
+        <div class="form-group col-md-6">
+            <label for="txtSubject">Subject <i style="color:red">*</i></label>
+            <textarea formControlName="Subject" name="Subject" class="form-control" 
+            id="txtSubject" rows="3" required></textarea>
+        </div>
+        <div class="form-group col-md-6">
+            <label for="txtRemarks">Remarks</label>
+            <textarea name="Remarks" formControlName="Remarks" class="form-control" id="txtRemarks" rows="3"></textarea>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="ddlDocType">Document Type <i style="color:red">*</i></label>
+            <select formControlName="DocType" name="DocType" id="ddlDocType"  class="form-control" required>
+                <option *ngFor="let type of docTypes" [ngValue]="type.DocType_ID">{{type.Doc_Type}}</option>
+            </select>
+        </div>
+        <div class="form-group col-md-6">
+            <label for="txtDate">Document Date</label>
+            <input name="DocDate" type="date" formControlName="DocDate" class="form-control" id="txtDate" placeholder="Document Date">
+        </div>
+    </div>
+
+    <div class="form-group col-md-12 text-center">
+        <div class="form-group col-md-6">            
+            <button type="submit" class="btn btn-primary pull-right">Archive Document
+
+            </button>
+        </div>
+        <div class="form-group col-md-6">
+            <input type="button" class="btn btn-default pull-left" (click)="ResetForm()" value="Reset Document Data" />
+        </div>
+    </div>
+
+</form>

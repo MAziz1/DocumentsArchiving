@@ -1,0 +1,11 @@
+<div class="row">
+  <div class="col-md-2">
+    <label>Document Type</label>
+  </div>
+  <div class="col-md-3">
+    <select class="select">
+      <option value="-1" selected="selected">Select</option>
+      <option *ngFor="let type of docTypes" [ngValue]="type.DocType_ID">{{type.Doc_Type}}</option>
+    </select>
+  </div>
+</div>
